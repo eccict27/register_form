@@ -333,6 +333,9 @@
 </head>
 <body>
 
+<!-- AUDIO ELEMENT FOR HOVER SOUND -->
+<audio id="hover-sound" src="audio.mp3" preload="auto"></audio>
+
 <div id="loader-screen">
     <div class="loader-logo">
         <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:#38b6ff;font-weight:bold;font-size:14px;\'>LOGO</span>'">
@@ -396,6 +399,19 @@
 
             typeLetter();
         }, 1200); 
+    });
+
+    // HOVER SOUND SCRIPT
+    const hoverSound = document.getElementById('hover-sound');
+    const buttons = document.querySelectorAll('.link-item');
+
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play().catch(e => {
+                // Browser autoplay handling
+            });
+        });
     });
 </script>
 
